@@ -25,6 +25,7 @@ steampipe query
 
 Run a query:
 ```sql
+select
   slug,
   name,
   id

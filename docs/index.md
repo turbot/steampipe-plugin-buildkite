@@ -18,6 +18,7 @@ og_image: "/images/plugins/turbot/buildkite-social-graphic.png"
 
 Example query:
 ```sql
+select
   slug,
   name,
   id
