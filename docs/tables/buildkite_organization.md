@@ -14,7 +14,7 @@ select
 from
   buildkite_organization
 order by
-  name
+  name;
 ```
 
 ### Organizations created in the last week
@@ -30,5 +30,5 @@ from
 where
   created_at > now() - interval '7 days'
 order by
-  created_at desc
+  created_at desc;
 ```

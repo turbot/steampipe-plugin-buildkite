@@ -18,22 +18,21 @@ og_image: "/images/plugins/turbot/buildkite-social-graphic.png"
 
 Example query:
 ```sql
-select
+  slug,
   name,
-  value,
-  description
+  id
 from
-  buildkite_address_object
+  buildkite_organization
 order by
-  name
+  name;
 ```
 
 ```
-+----------+-----------------+-------------------------+
-| name     | value           | description             |
-+----------+-----------------+-------------------------+
-| localnet | 192.168.80.0/24 | The 192.168.80 network. |
-+----------+-----------------+-------------------------+
++---------+------+--------------------------------------+
+| slug    | name | id                                   |
++---------+------+--------------------------------------+
+| test-74 | test | 11c22365-22ac-4368-aa11-ae1121919123 |
++---------+------+--------------------------------------+
 ```
 
 ## Documentation
