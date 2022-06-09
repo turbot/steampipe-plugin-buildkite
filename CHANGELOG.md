@@ -1,3 +1,8 @@
+## v0.0.2 [2022-06-09]
+
+_Bug fixes_
+
+- Fixed the brand color of the plugin icon. ([#3](https://github.com/turbot/steampipe-plugin-buildkite/pull/3))
 
 ## v0.0.1 [2022-06-09]
 
