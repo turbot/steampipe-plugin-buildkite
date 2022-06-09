@@ -14,8 +14,6 @@ import (
 	"github.com/turbot/steampipe-plugin-sdk/v3/plugin/transform"
 )
 
-const defaultLimit uint64 = 1000
-
 func connect(ctx context.Context, d *plugin.QueryData) (*bkapi.Client, error) {
 
 	// Load connection from cache, which preserves throttling protection etc
@@ -29,10 +27,8 @@ func connect(ctx context.Context, d *plugin.QueryData) (*bkapi.Client, error) {
 
 	// But prefer the config
 	buildkiteConfig := GetConfig(d.Connection)
-	if &buildkiteConfig != nil {
-		if buildkiteConfig.Token != nil {
-			token = *buildkiteConfig.Token
-		}
+	if buildkiteConfig.Token != nil {
+		token = *buildkiteConfig.Token
 	}
 
 	if token == "" {

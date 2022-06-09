@@ -105,7 +105,6 @@ func listBuild(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 			case "=":
 				createdAtMinTime = ts
 				createdAtMaxTime = ts
-				break
 			case "<", "<=":
 				if ts.Before(createdAtMaxTime) {
 					createdAtMaxTime = ts

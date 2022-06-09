@@ -19,21 +19,23 @@ og_image: "/images/plugins/turbot/buildkite-social-graphic.png"
 Example query:
 ```sql
 select
-  name,
-  value,
-  description
+  number,
+  state,
+  branch,
+  blocked
 from
-  buildkite_address_object
-order by
-  name
+  buildkite_build
+where
+  blocked
+  and created_at > now() - interval '1 day';
 ```
 
 ```
-+----------+-----------------+-------------------------+
-| name     | value           | description             |
-+----------+-----------------+-------------------------+
-| localnet | 192.168.80.0/24 | The 192.168.80 network. |
-+----------+-----------------+-------------------------+
++--------+-----------+--------+---------+
+| number | state     | branch | blocked |
++--------+-----------+--------+---------+
+| 1      | scheduled | master | true    |
++--------+-----------+--------+---------+
 ```
 
 ## Documentation
