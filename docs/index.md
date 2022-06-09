@@ -2,7 +2,7 @@
 organization: Turbot
 category: ["network"]
 icon_url: "/images/plugins/turbot/buildkite.svg"
-brand_color: "#FA582D"
+brand_color: "#14CC80"
 display_name: Buildkite
 name: buildkite
 description: Steampipe plugin to query Buildkite pipelines, builds, users and more.
