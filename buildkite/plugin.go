@@ -19,8 +19,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			ShouldIgnoreError: isNotFoundError,
 		},
 		TableMap: map[string]*plugin.Table{
-			"buildkite_agent": tableBuildkiteAgent(ctx),
-			// TODO - work out how to hydrate a single build or a parent hydrate list
+			"buildkite_agent": 		  tableBuildkiteAgent(ctx),
 			"buildkite_build":        tableBuildkiteBuild(ctx),
 			"buildkite_organization": tableBuildkiteOrganization(ctx),
 			"buildkite_pipeline":     tableBuildkitePipeline(ctx),
