@@ -6,9 +6,9 @@ import (
 
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
-	"github.com/turbot/steampipe-plugin-sdk/v3/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
 )
 
 func tableBuildkiteBuild(ctx context.Context) *plugin.Table {

@@ -10,8 +10,8 @@ import (
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
 	"github.com/turbot/go-kit/types"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*bkapi.Client, error) {
