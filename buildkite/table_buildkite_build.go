@@ -6,9 +6,9 @@ import (
 
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableBuildkiteBuild(ctx context.Context) *plugin.Table {
@@ -79,16 +79,16 @@ func listBuild(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 		},
 	}
 
-	if d.KeyColumnQuals["branch"] != nil {
-		opts.Branch = d.KeyColumnQuals["branch"].GetStringValue()
+	if d.EqualsQuals["branch"] != nil {
+		opts.Branch = d.EqualsQuals["branch"].GetStringValue()
 	}
 
-	if d.KeyColumnQuals["commit"] != nil {
-		opts.Commit = d.KeyColumnQuals["commit"].GetStringValue()
+	if d.EqualsQuals["commit"] != nil {
+		opts.Commit = d.EqualsQuals["commit"].GetStringValue()
 	}
 
-	if d.KeyColumnQuals["state"] != nil {
-		opts.State = []string{d.KeyColumnQuals["state"].GetStringValue()}
+	if d.EqualsQuals["state"] != nil {
+		opts.State = []string{d.EqualsQuals["state"].GetStringValue()}
 	}
 
 	// Find the time range from optional quals.
@@ -171,9 +171,9 @@ func getBuild(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (
 		return nil, err
 	}
 
-	org := d.KeyColumnQuals["organization_slug"].GetStringValue()
-	pipeline := d.KeyColumnQuals["pipeline_slug"].GetStringValue()
-	num := d.KeyColumnQuals["number"].GetStringValue()
+	org := d.EqualsQuals["organization_slug"].GetStringValue()
+	pipeline := d.EqualsQuals["pipeline_slug"].GetStringValue()
+	num := d.EqualsQuals["number"].GetStringValue()
 
 	build, resp, err := conn.Builds.Get(org, pipeline, num, nil)
 

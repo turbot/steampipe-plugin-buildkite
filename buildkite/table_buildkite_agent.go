@@ -5,9 +5,9 @@ import (
 
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableBuildkiteAgent(ctx context.Context) *plugin.Table {
@@ -64,7 +64,7 @@ func listAgent(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) 
 	}
 
 	// Convenience
-	keyQuals := d.KeyColumnQuals
+	keyQuals := d.EqualsQuals
 
 	var org string
 	if h.Item != nil {
@@ -117,8 +117,8 @@ func getAgent(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (
 		return nil, err
 	}
 
-	org := d.KeyColumnQuals["organization_slug"].GetStringValue()
-	id := d.KeyColumnQuals["id"].GetStringValue()
+	org := d.EqualsQuals["organization_slug"].GetStringValue()
+	id := d.EqualsQuals["id"].GetStringValue()
 
 	agent, resp, err := conn.Agents.Get(org, id)
 	if err != nil {
