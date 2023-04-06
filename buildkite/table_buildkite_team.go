@@ -5,9 +5,9 @@ import (
 
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableBuildkiteTeam(ctx context.Context) *plugin.Table {
@@ -48,7 +48,7 @@ func listTeam(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (
 	}
 
 	// Convenience
-	keyQuals := d.KeyColumnQuals
+	keyQuals := d.EqualsQuals
 
 	var org string
 	if h.Item != nil {

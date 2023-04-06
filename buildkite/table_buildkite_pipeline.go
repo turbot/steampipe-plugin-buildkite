@@ -5,9 +5,9 @@ import (
 
 	bkapi "github.com/buildkite/go-buildkite/v3/buildkite"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableBuildkitePipeline(ctx context.Context) *plugin.Table {
@@ -75,8 +75,8 @@ func listPipeline(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDat
 	var org string
 	if h.Item != nil {
 		org = *h.Item.(bkapi.Organization).Slug
-	} else if d.KeyColumnQuals["organization_slug"] != nil {
-		org = d.KeyColumnQuals["organization_slug"].GetStringValue()
+	} else if d.EqualsQuals["organization_slug"] != nil {
+		org = d.EqualsQuals["organization_slug"].GetStringValue()
 	}
 
 	opts := &bkapi.PipelineListOptions{
@@ -111,8 +111,8 @@ func getPipeline(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData
 		return nil, err
 	}
 
-	org := d.KeyColumnQuals["organization_slug"].GetStringValue()
-	slug := d.KeyColumnQuals["slug"].GetStringValue()
+	org := d.EqualsQuals["organization_slug"].GetStringValue()
+	slug := d.EqualsQuals["slug"].GetStringValue()
 
 	pipeline, resp, err := conn.Pipelines.Get(org, slug)
 	if err != nil {
