@@ -6,7 +6,7 @@ Use SQL to query pipelines, builds, users and more from [Buildkite](https://buil
 
 * **[Get started →](https://hub.steampipe.io/plugins/turbot/buildkite)**
 * Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/turbot/buildkite/tables)
-* Community: [Slack Channel](https://steampipe.io/community/join)
+* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
 * Get involved: [Issues](https://github.com/turbot/steampipe-plugin-buildkite/issues)
 
 ## Quick start
