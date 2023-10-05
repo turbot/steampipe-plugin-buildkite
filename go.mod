@@ -3,7 +3,7 @@ module github.com/turbot/steampipe-plugin-buildkite
 go 1.21
 
 require (
-	github.com/buildkite/go-buildkite/v3 v3.0.1
+	github.com/buildkite/go-buildkite/v3 v3.6.0
 	github.com/turbot/go-kit v0.8.0-rc.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
 )
