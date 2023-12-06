@@ -16,20 +16,30 @@ The `buildkite_pipeline` table provides detailed information about each pipeline
 ### List pipelines
 Explore the Buildkite pipelines in your system, ordered by their names, to gain insights into the different processes running in your environment. This can be useful for managing and optimizing your workflows.
 
-```sql
+```sql+postgres
 select
   slug,
   name
 from
   buildkite_pipeline
 order by
+  name;
+```
+
+```sql+sqlite
+select
+  slug,
   name
+from
+  buildkite_pipeline
+order by
+  name;
 ```
 
 ### Pipelines with waiting jobs
 Explore which pipelines have jobs pending execution to prioritize resources and manage workflow efficiently. This allows for better allocation of resources and minimizes downtime in the pipeline.
 
-```sql
+```sql+postgres
 select
   slug,
   name,
@@ -39,13 +49,26 @@ from
 where
   waiting_jobs_count > 0
 order by
-  waiting_jobs_count desc
+  waiting_jobs_count desc;
+```
+
+```sql+sqlite
+select
+  slug,
+  name,
+  waiting_jobs_count
+from
+  buildkite_pipeline
+where
+  waiting_jobs_count > 0
+order by
+  waiting_jobs_count desc;
 ```
 
 ### Pipelines with the ENV VAR AWS_ACCESS_KEY_ID set
 Explore which pipelines have the 'AWS_ACCESS_KEY_ID' environment variable set. This is useful to identify potential security risks or misconfigurations in your Buildkite pipelines.
 
-```sql
+```sql+postgres
 select
   slug,
   name,
@@ -54,4 +77,8 @@ from
   buildkite_pipeline
 where
   env ? 'AWS_ACCESS_KEY_ID'
+```
+
+```sql+sqlite
+Error: SQLite does not support the '?' operator for JSON objects.
 ```

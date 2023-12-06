@@ -16,7 +16,14 @@ The `buildkite_user` table provides insights into individual user profiles withi
 ### Get user info
 Explore the details of all users in the Buildkite system to understand their roles and permissions. This can be useful for auditing purposes or to ensure the correct access levels are assigned to each user.
 
-```sql
+```sql+postgres
+select
+  *
+from
+  buildkite_user
+```
+
+```sql+sqlite
 select
   *
 from
@@ -26,9 +33,17 @@ from
 ### Scopes assigned to the access token for this user
 Explore which scopes are assigned to the user's access token in Buildkite, allowing you to understand and manage the permissions and access levels of different users.
 
-```sql
+```sql+postgres
 select
   jsonb_array_elements_text(scopes) as scope
 from
   buildkite_user
+```
+
+```sql+sqlite
+select
+  json_each.value as scope
+from
+  buildkite_user,
+  json_each(scopes)
 ```

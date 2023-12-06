@@ -16,7 +16,18 @@ The `buildkite_team` table provides insights into Teams within Buildkite. As a D
 ### List all teams
 Explore the organization's teams in Buildkite to understand the structure and hierarchy. This can be beneficial for administration and management, offering a clear view of the teams' arrangement.
 
-```sql
+```sql+postgres
+select
+  slug,
+  name,
+  id
+from
+  buildkite_team
+order by
+  name
+```
+
+```sql+sqlite
 select
   slug,
   name,
@@ -30,7 +41,7 @@ order by
 ### Teams created in the last week
 Explore which teams have been recently established within the past week. This can be particularly useful for administrators to stay updated on new team formations and their details.
 
-```sql
+```sql+postgres
 select
   slug,
   name,
@@ -44,10 +55,38 @@ order by
   created_at desc
 ```
 
+```sql+sqlite
+select
+  slug,
+  name,
+  id,
+  created_at
+from
+  buildkite_team
+where
+  created_at > datetime('now', '-7 days')
+order by
+  created_at desc
+```
+
 ### Secret teams
 Discover the segments that are classified as 'secret' within your Buildkite teams to enhance your understanding of privacy settings and ensure appropriate access control measures are in place.
 
-```sql
+```sql+postgres
+select
+  slug,
+  name,
+  id,
+  privacy
+from
+  buildkite_team
+where
+  privacy = 'secret'
+order by
+  name
+```
+
+```sql+sqlite
 select
   slug,
   name,
