@@ -8,6 +8,7 @@ name: buildkite
 description: Steampipe plugin to query Buildkite pipelines, builds, users and more.
 og_description: Query Buildkite with SQL! Open source CLI. No DB required.
 og_image: "/images/plugins/turbot/buildkite-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Buildkite + Steampipe
