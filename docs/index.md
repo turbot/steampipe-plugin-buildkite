@@ -82,7 +82,4 @@ The `token` should be assigned read permissions:
 - `read_teams`
 - `read_user`
 
-## Get involved
 
-* Open source: https://github.com/turbot/steampipe-plugin-buildkite
-* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
