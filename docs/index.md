@@ -8,11 +8,12 @@ name: buildkite
 description: Steampipe plugin to query Buildkite pipelines, builds, users and more.
 og_description: Query Buildkite with SQL! Open source CLI. No DB required.
 og_image: "/images/plugins/turbot/buildkite-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Buildkite + Steampipe
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 [Buildkite](https://buildkite.com) is a platform for running fast, secure, and scalable continuous integration pipelines on your own infrastructure.
 
@@ -81,7 +82,4 @@ The `token` should be assigned read permissions:
 - `read_teams`
 - `read_user`
 
-## Get involved
 
-* Open source: https://github.com/turbot/steampipe-plugin-buildkite
-* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
