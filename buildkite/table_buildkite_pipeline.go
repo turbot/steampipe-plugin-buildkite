@@ -28,7 +28,7 @@ func tableBuildkitePipeline(ctx context.Context) *plugin.Table {
 				{Name: "slug"},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "slug", Type: proto.ColumnType_STRING, Description: "Slug of the pipeline."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the pipeline."},
@@ -60,7 +60,7 @@ func tableBuildkitePipeline(ctx context.Context) *plugin.Table {
 			{Name: "visibility", Type: proto.ColumnType_STRING, Description: "Visibility of the pipeline."},
 			{Name: "waiting_jobs_count", Type: proto.ColumnType_INT, Transform: transform.FromField("WaitingJobsCount"), Description: "Number of waiting jobs."},
 			{Name: "web_url", Type: proto.ColumnType_STRING, Description: "Web URL for the pipeline."},
-		},
+		}),
 	}
 }
 

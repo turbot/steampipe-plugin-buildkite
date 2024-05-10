@@ -36,7 +36,7 @@ func tableBuildkiteBuild(ctx context.Context) *plugin.Table {
 				},
 			},
 		*/
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "organization_slug", Type: proto.ColumnType_STRING, Transform: transform.FromField("URL").Transform(orgFromURL), Description: "Organization of the build."},
 			{Name: "pipeline_slug", Type: proto.ColumnType_STRING, Transform: transform.FromField("Pipeline.Slug"), Description: "Slug of the pipeline the build is for."},
@@ -60,7 +60,7 @@ func tableBuildkiteBuild(ctx context.Context) *plugin.Table {
 			{Name: "started_at", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("StartedAt").Transform(timeToRfc3339), Description: "Time when the build was started."},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "URL for the build."},
 			{Name: "web_url", Type: proto.ColumnType_STRING, Description: "Web URL for the build."},
-		},
+		}),
 	}
 }
 

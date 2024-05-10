@@ -23,7 +23,7 @@ func tableBuildkiteOrganization(ctx context.Context) *plugin.Table {
 				{Name: "slug"},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "slug", Type: proto.ColumnType_STRING, Description: "Slug of the organization."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the organization."},
@@ -37,7 +37,7 @@ func tableBuildkiteOrganization(ctx context.Context) *plugin.Table {
 			{Name: "repository", Type: proto.ColumnType_STRING, Description: "Repository for the organization."},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "URL for the organization."},
 			{Name: "web_url", Type: proto.ColumnType_STRING, Description: "Web URL for the organization."},
-		},
+		}),
 	}
 }
 

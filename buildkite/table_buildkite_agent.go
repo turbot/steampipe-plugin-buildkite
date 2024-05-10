@@ -31,7 +31,7 @@ func tableBuildkiteAgent(ctx context.Context) *plugin.Table {
 				{Name: "id"},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "organization_slug", Type: proto.ColumnType_STRING, Transform: transform.FromField("URL").Transform(orgFromURL), Description: "Organization of the agent."},
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "ID of the agent."},
@@ -51,7 +51,7 @@ func tableBuildkiteAgent(ctx context.Context) *plugin.Table {
 			{Name: "user_agent", Type: proto.ColumnType_STRING, Description: "User agent of the agent."},
 			{Name: "version", Type: proto.ColumnType_STRING, Description: "Version of the agent."},
 			{Name: "web_url", Type: proto.ColumnType_STRING, Description: "Web URL for the agent."},
-		},
+		}),
 	}
 }
 
