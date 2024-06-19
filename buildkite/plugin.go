@@ -14,11 +14,19 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			NewInstance: ConfigInstance,
 		},
 		DefaultTransform: transform.FromJSONTag().NullIfZero(),
+		// User ID against which the access token has generated. (This is unique per connection)
+		// User can have access to multiple Organizations so org ID can not be include as connection key quals.
+		ConnectionKeyColumns: []plugin.ConnectionKeyColumn{
+			{
+				Name:    "member_id",
+				Hydrate: getMemberId,
+			},
+		},
 		DefaultGetConfig: &plugin.GetConfig{
 			ShouldIgnoreError: isNotFoundError,
 		},
 		TableMap: map[string]*plugin.Table{
-			"buildkite_agent": 		  tableBuildkiteAgent(ctx),
+			"buildkite_agent":        tableBuildkiteAgent(ctx),
 			"buildkite_build":        tableBuildkiteBuild(ctx),
 			"buildkite_organization": tableBuildkiteOrganization(ctx),
 			"buildkite_pipeline":     tableBuildkitePipeline(ctx),

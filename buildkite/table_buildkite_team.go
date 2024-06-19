@@ -18,7 +18,7 @@ func tableBuildkiteTeam(ctx context.Context) *plugin.Table {
 			ParentHydrate: listOrganization,
 			Hydrate:       listTeam,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "organization_slug", Type: proto.ColumnType_STRING, Description: "Organization slug for the team."},
 			{Name: "slug", Type: proto.ColumnType_STRING, Transform: transform.FromField("Team.Slug"), Description: "Slug of the team."},
@@ -30,7 +30,7 @@ func tableBuildkiteTeam(ctx context.Context) *plugin.Table {
 			{Name: "default", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Team.Default"), Description: "True if this is the default team."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("Team.CreatedAt").Transform(timeToRfc3339), Description: "Time when the team was created."},
 			{Name: "created_by", Type: proto.ColumnType_JSON, Transform: transform.FromField("Team.CreatedBy"), Description: "User who created the team."},
-		},
+		}),
 	}
 }
 

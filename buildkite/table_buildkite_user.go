@@ -15,7 +15,7 @@ func tableBuildkiteUser(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listUser,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "ID of the user."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the user."},
@@ -23,7 +23,7 @@ func tableBuildkiteUser(ctx context.Context) *plugin.Table {
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("CreatedAt").Transform(timeToRfc3339), Description: "Time when the user was created."},
 			{Name: "access_token_uuid", Type: proto.ColumnType_STRING, Hydrate: getAccessToken, Transform: transform.FromField("UUID"), Description: "UUID of the access token for these credentials."},
 			{Name: "scopes", Type: proto.ColumnType_JSON, Hydrate: getAccessToken, Description: "Scopes assigned to the access token for this user."},
-		},
+		}),
 	}
 }
 
