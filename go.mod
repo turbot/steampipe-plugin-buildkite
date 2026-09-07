@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/buildkite/go-buildkite/v3 v3.0.1
 	github.com/turbot/go-kit v1.1.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.14.0
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.14.1
 )
 
 require (
